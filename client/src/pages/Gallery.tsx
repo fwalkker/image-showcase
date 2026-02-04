@@ -1,9 +1,24 @@
+import { useState } from "react";
 import { collections, feedItems } from "@/lib/mockData";
 import { GalleryCard } from "@/components/GalleryCard";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 
 export default function Gallery() {
+  const [expandedCollections, setExpandedCollections] = useState<Set<string>>(new Set());
+
+  const toggleCollection = (collectionId: string) => {
+    setExpandedCollections(prev => {
+      const next = new Set(prev);
+      if (next.has(collectionId)) {
+        next.delete(collectionId);
+      } else {
+        next.add(collectionId);
+      }
+      return next;
+    });
+  };
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation - Minimalist */}
@@ -29,34 +44,44 @@ export default function Gallery() {
           </header>
 
           <div className="space-y-32">
-            {collections.map((collection, idx) => (
-              <div key={collection.id} className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
-                
-                {/* Collection Info Sticky */}
-                <div className="md:col-span-4 md:sticky md:top-32 mb-8 md:mb-0">
-                  <span className="text-xs font-mono text-muted-foreground mb-2 block">0{idx + 1} / COLLECTION</span>
-                  <h2 className="text-3xl font-serif mb-4">{collection.name}</h2>
-                  <p className="text-muted-foreground mb-6 leading-relaxed">
-                    {collection.description} A comprehensive series of twenty-one selected works showcasing the brand's unique visual identity and artistic direction.
-                  </p>
-                  <button className="text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity">
-                    View All 21 Items
-                  </button>
-                </div>
+            {collections.map((collection, idx) => {
+              const isExpanded = expandedCollections.has(collection.id);
+              const itemsToShow = isExpanded ? collection.items : collection.items.slice(0, 6);
 
-                {/* Collection Preview Grid (showing first 6 of 21) */}
-                <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                  {collection.items.slice(0, 6).map((item) => (
-                    <GalleryCard key={item.id} item={item} />
-                  ))}
-                  <div className="col-span-full flex justify-center py-8">
-                    <span className="text-xs text-muted-foreground italic">
-                      + {collection.items.length - 6} more items in this collection
-                    </span>
+              return (
+                <div key={collection.id} className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+
+                  {/* Collection Info Sticky */}
+                  <div className="md:col-span-4 md:sticky md:top-32 mb-8 md:mb-0">
+                    <span className="text-xs font-mono text-muted-foreground mb-2 block">0{idx + 1} / COLLECTION</span>
+                    <h2 className="text-3xl font-serif mb-4">{collection.name}</h2>
+                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                      {collection.description} A comprehensive series of twenty-one selected works showcasing the brand's unique visual identity and artistic direction.
+                    </p>
+                    <button
+                      onClick={() => toggleCollection(collection.id)}
+                      className="text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity"
+                    >
+                      {isExpanded ? 'Show Less' : `View All ${collection.items.length} Items`}
+                    </button>
+                  </div>
+
+                  {/* Collection Preview Grid */}
+                  <div className="md:col-span-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {itemsToShow.map((item) => (
+                      <GalleryCard key={item.id} item={item} />
+                    ))}
+                    {!isExpanded && collection.items.length > 6 && (
+                      <div className="col-span-full flex justify-center py-8">
+                        <span className="text-xs text-muted-foreground italic">
+                          + {collection.items.length - 6} more items in this collection
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
