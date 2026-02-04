@@ -118,8 +118,10 @@ export default function Gallery() {
                 Featured Campaigns
               </span>
 
-              <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-8 leading-[1.05] text-foreground">
-                Your Products, Your Vision, <span className="sm:hidden"><br /></span><span className="italic">Our Excecution.</span>
+              <h1 className="font-serif mb-4 sm:mb-8 leading-[1.05] text-foreground">
+                <span className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl whitespace-nowrap">Your Products, Your Vision,</span>
+                <span className="sm:hidden"><br /></span>
+                <span className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl italic"> Our Excecution.</span>
               </h1>
 
               <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
