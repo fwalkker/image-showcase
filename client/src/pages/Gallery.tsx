@@ -42,9 +42,9 @@ export default function Gallery() {
           {/* Mobile: Scrolling marquee of images */}
           <div className="sm:hidden relative h-[70vh]">
             <div className="absolute inset-0 flex flex-col gap-2 animate-scroll-up">
-              {/* First set of images */}
+              {/* First set of images - 9 for 3x3 grid */}
               <div className="grid grid-cols-3 gap-2 px-2 flex-shrink-0">
-                {wordAds.map((ad) => (
+                {wordAds.slice(0, 9).map((ad) => (
                   <img
                     key={ad.id}
                     src={ad.src}
@@ -56,7 +56,7 @@ export default function Gallery() {
               </div>
               {/* Duplicate for seamless loop */}
               <div className="grid grid-cols-3 gap-2 px-2 flex-shrink-0">
-                {wordAds.map((ad) => (
+                {wordAds.slice(0, 9).map((ad) => (
                   <img
                     key={`${ad.id}-dup`}
                     src={ad.src}
