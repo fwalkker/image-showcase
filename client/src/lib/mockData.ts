@@ -418,8 +418,6 @@ export const ecomItems: GalleryItem[] = [
   { id: "ecom-138", type: "product", src: "/webp/Ecom Suit of Photos/yellow-pot-front.webp", title: "yellow pot front", price: "$36.62", company: "Shop Now", aspectRatio: "portrait" },
   { id: "ecom-139", type: "product", src: "/webp/Ecom Suit of Photos/yellow-pot-side.webp", title: "yellow pot side", price: "$43.38", company: "Shop Now", aspectRatio: "portrait" },
 ];
-  { id: "ecom-60", type: "product", src: "/webp/Ecom Suit of Photos/jam-jar-front.webp", title: "Artisan Jam", price: "$54.58", company: "Shop Now", aspectRatio: "portrait" },
-];
 
 // Company Ads (using hero/fantasy images from collections)
 export const companyAds: GalleryItem[] = [
