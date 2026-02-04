@@ -20,12 +20,12 @@ export default function Gallery() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Navigation - Minimalist */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-background/80 backdrop-blur-md border-b border-border/40">
-        <div className="h-8 md:h-10">
+    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+      {/* Navigation - Mobile Optimized */}
+      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-background/80 backdrop-blur-md border-b border-border/40">
+        <div className="h-7 sm:h-8 md:h-10 flex-shrink-0">
           <img
-            src="/images-optimized/public/webp/Advertizing Photos/optivo-logo-exact (2)(2)(1).webp"
+            src="/images-optimized/public/webp/Advertizing Photos/optivo-logo.webp"
             alt="Optivo Logo"
             className="h-full w-auto object-contain"
           />
@@ -37,33 +37,33 @@ export default function Gallery() {
         </div>
         <a
           href="mailto:finn.walker@optivo.ca"
-          className="text-sm font-medium border border-border px-4 py-2 hover:bg-secondary transition-colors"
+          className="text-xs sm:text-sm font-medium border border-border px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-secondary transition-colors whitespace-nowrap"
         >
           Contact
         </a>
       </nav>
 
-      <main className="pt-20">
+      <main className="pt-16 sm:pt-20">
 
         {/* HERO SECTION - Word Ads Showcase */}
-        <section id="hero" className="relative bg-background py-16 md:py-24">
+        <section id="hero" className="relative bg-background py-10 sm:py-16 md:py-24">
           <div className="container mx-auto px-4">
             {/* Hero Header */}
-            <div className="mb-12 text-center max-w-3xl mx-auto">
-              <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4 block">
+            <div className="mb-8 sm:mb-12 text-center max-w-3xl mx-auto">
+              <span className="text-[10px] sm:text-xs font-mono text-muted-foreground tracking-widest uppercase mb-3 sm:mb-4 block">
                 Featured Campaigns
               </span>
-              <h1 className="text-4xl md:text-7xl font-serif mb-6 leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-6 leading-tight">
                 Your Products.<br />Our Vision.
               </h1>
-              <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
+              <p className="text-sm sm:text-base text-muted-foreground max-w-xl mx-auto leading-relaxed px-2">
                 Send us your products and we'll transform them into stunning photography.
                 From lighting and styling to action shots and advertising creatives—we handle everything.
               </p>
             </div>
 
-            {/* All Ads Grid - 2 rows of 5 */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+            {/* All Ads Grid - Responsive */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-3 md:gap-4">
               {wordAds.map((ad) => (
                 <motion.div
                   key={ad.id}
@@ -79,9 +79,9 @@ export default function Gallery() {
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
-                      <p className="text-xs font-medium mb-1">{ad.title}</p>
-                      <p className="text-[10px] text-white/70">{ad.company}</p>
+                    <div className="absolute bottom-0 left-0 right-0 p-2 sm:p-3 text-white">
+                      <p className="text-[10px] sm:text-xs font-medium mb-0.5 sm:mb-1 truncate">{ad.title}</p>
+                      <p className="text-[9px] sm:text-[10px] text-white/70 truncate">{ad.company}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -91,54 +91,54 @@ export default function Gallery() {
         </section>
 
         {/* SECTION 1: Portfolio Collections - Organized by Shot Type */}
-        <section id="collections" className="container mx-auto px-4 py-24">
-          <header className="mb-16 text-center max-w-2xl mx-auto">
-            <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4 block">
+        <section id="collections" className="container mx-auto px-4 py-12 sm:py-16 md:py-24">
+          <header className="mb-10 sm:mb-16 text-center max-w-2xl mx-auto">
+            <span className="text-[10px] sm:text-xs font-mono text-muted-foreground tracking-widest uppercase mb-3 sm:mb-4 block">
               Portfolio
             </span>
-            <h2 className="text-4xl md:text-6xl font-serif mb-4">Curated Collections</h2>
-            <p className="text-muted-foreground leading-relaxed">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-3 sm:mb-4">Curated Collections</h2>
+            <p className="text-sm sm:text-base text-muted-foreground leading-relaxed px-2">
               Exploring the intersection of art, nature, and commerce through product photography.
             </p>
           </header>
 
-          <div className="space-y-32">
+          <div className="space-y-16 sm:space-y-24 md:space-y-32">
             {collections.map((collection, idx) => {
               const isExpanded = expandedCollections.has(collection.id);
 
               return (
-                <div key={collection.id} className="grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+                <div key={collection.id} className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
 
-                  {/* Collection Info Sticky */}
-                  <div className="md:col-span-4 md:sticky md:top-32 mb-8 md:mb-0">
-                    <span className="text-xs font-mono text-muted-foreground mb-2 block">
+                  {/* Collection Info - Mobile: Full width, Desktop: Sticky sidebar */}
+                  <div className="md:col-span-4 md:sticky md:top-24 lg:top-32">
+                    <span className="text-[10px] sm:text-xs font-mono text-muted-foreground mb-2 block">
                       0{idx + 1} / COLLECTION
                     </span>
-                    <h3 className="text-3xl font-serif mb-4">{collection.name}</h3>
-                    <p className="text-muted-foreground mb-6 leading-relaxed">
+                    <h3 className="text-2xl sm:text-3xl font-serif mb-3 sm:mb-4">{collection.name}</h3>
+                    <p className="text-sm sm:text-base text-muted-foreground mb-4 sm:mb-6 leading-relaxed">
                       {collection.description} A comprehensive visual identity system showcasing
                       advertising, lifestyle, and e-commerce photography.
                     </p>
 
                     {/* Shot Type Legend */}
-                    <div className="space-y-2 mb-6">
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <span className="w-3 h-3 bg-foreground/80 rounded-full"></span>
+                    <div className="space-y-1.5 sm:space-y-2 mb-4 sm:mb-6">
+                      <div className="flex items-center gap-2 text-[11px] sm:text-xs text-muted-foreground">
+                        <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-foreground/80 rounded-full flex-shrink-0"></span>
                         <span>Advertising ({collection.advertisingShots.length})</span>
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <span className="w-3 h-3 bg-foreground/50 rounded-full"></span>
+                      <div className="flex items-center gap-2 text-[11px] sm:text-xs text-muted-foreground">
+                        <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-foreground/50 rounded-full flex-shrink-0"></span>
                         <span>Lifestyle ({collection.lifestyleShots.length})</span>
                       </div>
-                      <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                        <span className="w-3 h-3 bg-foreground/30 rounded-full"></span>
+                      <div className="flex items-center gap-2 text-[11px] sm:text-xs text-muted-foreground">
+                        <span className="w-2.5 h-2.5 sm:w-3 sm:h-3 bg-foreground/30 rounded-full flex-shrink-0"></span>
                         <span>E-commerce ({collection.ecomShots.length})</span>
                       </div>
 
                       {/* View All Button */}
                       <button
                         onClick={() => toggleCollection(collection.id)}
-                        className="text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity mt-4"
+                        className="text-xs sm:text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity mt-3 sm:mt-4"
                       >
                         {isExpanded ? "Show Less" : "View All Shots"}
                       </button>
@@ -148,11 +148,11 @@ export default function Gallery() {
                   {/* Collection Images Grid */}
                   <div className="md:col-span-8">
                     {/* ADVERTISING SHOTS - Show 6 when collapsed, all when expanded */}
-                    <div className="mb-8">
-                      <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4 block">
+                    <div className="mb-6 sm:mb-8">
+                      <span className="text-[10px] sm:text-xs font-mono text-muted-foreground tracking-widest uppercase mb-3 sm:mb-4 block">
                         Advertising & Hero Shots
                       </span>
-                      <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
                         {(isExpanded ? collection.advertisingShots : collection.advertisingShots.slice(0, 6)).map((item) => (
                           <GalleryCard key={item.id} item={item} />
                         ))}
@@ -169,11 +169,11 @@ export default function Gallery() {
                           transition={{ duration: 0.4 }}
                           className="overflow-hidden"
                         >
-                          <div className="mb-8">
-                            <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4 block">
+                          <div className="mb-6 sm:mb-8">
+                            <span className="text-[10px] sm:text-xs font-mono text-muted-foreground tracking-widest uppercase mb-3 sm:mb-4 block">
                               Lifestyle & Detail Shots
                             </span>
-                            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
                               {collection.lifestyleShots.map((item) => (
                                 <GalleryCard key={item.id} item={item} />
                               ))}
@@ -182,10 +182,10 @@ export default function Gallery() {
 
                           {/* E-COMMERCE SHOTS */}
                           <div>
-                            <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4 block">
+                            <span className="text-[10px] sm:text-xs font-mono text-muted-foreground tracking-widest uppercase mb-3 sm:mb-4 block">
                               E-commerce Product Shots
                             </span>
-                            <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div className="grid grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-3 md:gap-4">
                               {collection.ecomShots.map((item) => (
                                 <GalleryCard key={item.id} item={item} />
                               ))}
@@ -197,10 +197,10 @@ export default function Gallery() {
 
                     {/* Expand Button - Show remaining count */}
                     {!isExpanded && (
-                      <div className="flex justify-center py-4">
+                      <div className="flex justify-center py-3 sm:py-4">
                         <button
                           onClick={() => toggleCollection(collection.id)}
-                          className="text-xs text-muted-foreground italic hover:text-foreground transition-colors cursor-pointer"
+                          className="text-[11px] sm:text-xs text-muted-foreground italic hover:text-foreground transition-colors cursor-pointer"
                         >
                           + {(collection.advertisingShots.length - 6) + collection.lifestyleShots.length + collection.ecomShots.length} more shots in this collection
                         </button>
@@ -213,22 +213,22 @@ export default function Gallery() {
           </div>
         </section>
 
-        <Separator className="my-8" />
+        <Separator className="my-6 sm:my-8" />
 
         {/* SECTION 2: E-commerce Product Grid - Smaller Images */}
-        <section id="shop" className="container mx-auto px-4 py-24">
-          <header className="mb-12">
-            <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-2 block">
+        <section id="shop" className="container mx-auto px-4 py-12 sm:py-16 md:py-24">
+          <header className="mb-8 sm:mb-12">
+            <span className="text-[10px] sm:text-xs font-mono text-muted-foreground tracking-widest uppercase mb-2 block">
               Shop
             </span>
-            <h2 className="text-3xl font-serif">Product Gallery</h2>
-            <p className="text-muted-foreground mt-2">
+            <h2 className="text-2xl sm:text-3xl font-serif">Product Gallery</h2>
+            <p className="text-sm sm:text-base text-muted-foreground mt-2">
               E-commerce photography showcase. Clean, professional product shots.
             </p>
           </header>
 
-          {/* Dense Grid for E-commerce - Smaller images */}
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-2">
+          {/* Dense Grid for E-commerce - Mobile optimized with better gap */}
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-1.5 sm:gap-2">
             {ecomItems.map((item) => (
               <motion.div
                 key={item.id}
@@ -244,22 +244,22 @@ export default function Gallery() {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/40 transition-colors duration-300 flex items-end">
-                  <div className="p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white">
-                    <p className="text-[10px] font-medium truncate">{item.title}</p>
-                    <p className="text-[10px] font-mono opacity-70">{item.price}</p>
+                  <div className="p-1.5 sm:p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 text-white w-full">
+                    <p className="text-[8px] sm:text-[10px] font-medium truncate">{item.title}</p>
+                    <p className="text-[8px] sm:text-[10px] font-mono opacity-70">{item.price}</p>
                   </div>
                 </div>
               </motion.div>
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <p className="text-muted-foreground mb-4 text-sm italic">
+          <div className="mt-8 sm:mt-12 text-center">
+            <p className="text-muted-foreground mb-3 sm:mb-4 text-xs sm:text-sm italic">
               And Many more!
             </p>
             <a
               href="mailto:finn.walker@optivo.ca"
-              className="inline-block px-8 py-3 bg-foreground text-background text-sm font-medium hover:opacity-90 transition-opacity"
+              className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-foreground text-background text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity"
             >
               Request Quote
             </a>
@@ -268,17 +268,17 @@ export default function Gallery() {
 
       </main>
 
-      <footer className="border-t border-border py-12 bg-secondary/30">
+      <footer className="border-t border-border py-8 sm:py-12 bg-secondary/30">
         <div className="container mx-auto px-4 text-center">
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-3 sm:mb-4">
             <img
-              src="/images-optimized/public/webp/Advertizing Photos/optivo-logo-exact (2)(2)(1).webp"
+              src="/images-optimized/public/webp/Advertizing Photos/optivo-logo.webp"
               alt="Optivo Logo"
-              className="h-12 w-auto object-contain"
+              className="h-10 sm:h-12 w-auto object-contain"
             />
           </div>
-          <p className="text-sm text-muted-foreground">Product Photography Studio</p>
-          <p className="text-xs text-muted-foreground mt-2">© 2024 Optivo. All rights reserved.</p>
+          <p className="text-xs sm:text-sm text-muted-foreground">Product Photography Studio</p>
+          <p className="text-[10px] sm:text-xs text-muted-foreground mt-1.5 sm:mt-2">© 2024 Optivo. All rights reserved.</p>
         </div>
       </footer>
     </div>
