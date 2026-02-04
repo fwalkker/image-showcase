@@ -2,7 +2,7 @@ import { useState } from "react";
 import { collections, wordAds, ecomItems } from "@/lib/mockData";
 import { GalleryCard } from "@/components/GalleryCard";
 import { Separator } from "@/components/ui/separator";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Gallery() {
   const [expandedCollections, setExpandedCollections] = useState<Set<string>>(new Set());
