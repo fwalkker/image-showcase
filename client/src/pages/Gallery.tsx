@@ -139,7 +139,7 @@ export default function Gallery() {
                       {/* View All Button */}
                       <button
                         onClick={() => toggleCollection(collection.id)}
-                        className="text-xs sm:text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity mt-3 sm:mt-4"
+                        className="text-xs sm:text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity mt-3 sm:mt-4 cursor-pointer"
                       >
                         {isExpanded ? "Show Less" : "View All Shots"}
                       </button>
@@ -201,7 +201,7 @@ export default function Gallery() {
                       <div className="flex justify-center py-3 sm:py-4">
                         <button
                           onClick={() => toggleCollection(collection.id)}
-                          className="text-xs sm:text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity"
+                          className="text-xs sm:text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity cursor-pointer"
                         >
                           + {(collection.advertisingShots.length - 6) + collection.lifestyleShots.length + collection.ecomShots.length} more shots in this collection
                         </button>
