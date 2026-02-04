@@ -23,7 +23,13 @@ export default function Gallery() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Navigation - Minimalist */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-background/80 backdrop-blur-md border-b border-border/40">
-        <div className="text-xl font-serif font-bold tracking-tight">Lumina.</div>
+        <div className="h-8 md:h-10">
+          <img
+            src="/images-optimized/public/webp/Advertizing Photos/optivo-logo-exact (2)(2)(1).webp"
+            alt="Optivo Logo"
+            className="h-full w-auto object-contain"
+          />
+        </div>
         <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
           <a href="#hero" className="text-muted-foreground hover:text-foreground transition-colors">Featured</a>
           <a href="#collections" className="text-muted-foreground hover:text-foreground transition-colors">Collections</a>
@@ -264,9 +270,15 @@ export default function Gallery() {
 
       <footer className="border-t border-border py-12 bg-secondary/30">
         <div className="container mx-auto px-4 text-center">
-          <h3 className="font-serif text-2xl mb-4">Lumina.</h3>
+          <div className="flex justify-center mb-4">
+            <img
+              src="/images-optimized/public/webp/Advertizing Photos/optivo-logo-exact (2)(2)(1).webp"
+              alt="Optivo Logo"
+              className="h-12 w-auto object-contain"
+            />
+          </div>
           <p className="text-sm text-muted-foreground">Product Photography Studio</p>
-          <p className="text-xs text-muted-foreground mt-2">© 2024 Lumina Gallery. All rights reserved.</p>
+          <p className="text-xs text-muted-foreground mt-2">© 2024 Optivo. All rights reserved.</p>
         </div>
       </footer>
     </div>
