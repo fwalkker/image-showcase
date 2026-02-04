@@ -128,6 +128,10 @@ export default function Gallery() {
                 Send us your products and with your vision, we'll transform them into stunning photography.
                 From lighting and styling to action shots and advertising creatives—we handle everything.
               </p>
+
+              <span className="inline-block mt-6 sm:mt-8 text-xs font-mono tracking-[0.15em] uppercase text-foreground/70">
+                Starting at $9/image
+              </span>
             </motion.div>
           </div>
         </section>
