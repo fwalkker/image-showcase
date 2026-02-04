@@ -118,7 +118,7 @@ export default function Gallery() {
                 Featured Campaigns
               </span>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-8 leading-[1.1] text-foreground">
+              <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-8 leading-[1.05] text-foreground">
                 Your Products, Your Vision<br />
                 <span className="italic">Our Excecution.</span>
               </h1>
