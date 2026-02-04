@@ -119,7 +119,7 @@ export default function Gallery() {
               </span>
 
               <h1 className="font-serif mb-4 sm:mb-8 leading-[1.05] text-foreground">
-                <span className="text-5xl sm:text-4xl md:text-5xl lg:text-6xl sm:whitespace-nowrap">Your Products, Your Vision,</span>
+                <span className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl sm:whitespace-nowrap">Your Products, Your Vision,</span>
                 <span className="sm:hidden"><br /></span>
                 <span className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl italic"> Our Excecution.</span>
               </h1>
