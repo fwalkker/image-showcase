@@ -138,7 +138,7 @@ export default function Gallery() {
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-3 sm:mb-4">We Transform Products</h2>
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed px-2">
-              Just snap a quick photo of your product—it doesn't need to be perfect. Send it to us with any details you want included, and we'll handle the rest. Using AI and professional editing, we transform your casual snapshots into stunning marketing visuals, sales content, and graphic design assets. You don't need expensive equipment or photography skills. Below are just a few examples of what we create:
+              Just snap a quick photo of your product with your phone—it doesn't need to be perfect. Send it to us with any details you want included, and we'll handle the rest. Using our team of professional editors, we transform your casual snapshots into stunning visuals for all platforms. Below are just a few examples of what we create:
             </p>
           </header>
 
