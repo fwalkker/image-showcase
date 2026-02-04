@@ -22,7 +22,7 @@ export default function Gallery() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div className="min-h-screen bg-background text-foreground">
       {/* Navigation - Mobile Optimized */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-background/80 backdrop-blur-md border-b border-border/40">
         <div className="h-7 sm:h-8 md:h-10 flex-shrink-0">
