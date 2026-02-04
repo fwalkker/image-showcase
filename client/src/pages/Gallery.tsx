@@ -48,7 +48,7 @@ export default function Gallery() {
         {/* HERO SECTION - Text Overlaying Images */}
         <section id="hero" className="relative overflow-hidden">
           {/* Image Grid - Top row half off screen */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 -mt-52 sm:-mt-64 md:-mt-80 lg:-mt-96">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 -mt-44 sm:-mt-52 md:-mt-64 lg:-mt-80">
             {wordAds.map((ad, index) => (
               <motion.div
                 key={ad.id}
