@@ -5,18 +5,10 @@ import { Separator } from "@/components/ui/separator";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Gallery() {
-  const [expandedCollections, setExpandedCollections] = useState<Set<string>>(new Set());
+  const [expandedCollection, setExpandedCollection] = useState<string | null>(null);
 
   const toggleCollection = (collectionId: string) => {
-    setExpandedCollections((prev) => {
-      const next = new Set(prev);
-      if (next.has(collectionId)) {
-        next.delete(collectionId);
-      } else {
-        next.add(collectionId);
-      }
-      return next;
-    });
+    setExpandedCollection((prev) => prev === collectionId ? null : collectionId);
   };
 
   return (
@@ -113,7 +105,7 @@ export default function Gallery() {
 
           <div className="space-y-16 sm:space-y-24 md:space-y-32">
             {collections.map((collection, idx) => {
-              const isExpanded = expandedCollections.has(collection.id);
+              const isExpanded = expandedCollection === collection.id;
 
               return (
                 <div key={collection.id} className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
