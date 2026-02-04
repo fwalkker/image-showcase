@@ -45,16 +45,46 @@ export default function Gallery() {
 
       <main className="pt-16 sm:pt-20">
 
-        {/* HERO SECTION - Overlay Design */}
-        <section id="hero" className="relative min-h-[85vh] flex items-center py-16 sm:py-20 md:py-24 overflow-hidden">
-          <div className="container mx-auto px-4 relative z-10">
+        {/* HERO SECTION - Text Overlaying Images */}
+        <section id="hero" className="relative overflow-hidden">
+          {/* Image Grid - Full bleed, no cropping */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-0">
+            {wordAds.map((ad, index) => (
+              <motion.div
+                key={ad.id}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.08,
+                  ease: "easeOut"
+                }}
+                className="group relative"
+              >
+                <img
+                  src={ad.src}
+                  alt={ad.title}
+                  className="w-full h-auto block transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
+                  loading="lazy"
+                />
+                {/* Subtle overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
+                    <p className="text-xs sm:text-sm font-medium text-white mb-1 drop-shadow-lg">{ad.title}</p>
+                    <p className="text-[10px] sm:text-xs text-white/80 drop-shadow-md">{ad.company}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
 
-            {/* Centered Hero Text with Dramatic Shadows */}
+          {/* Overlay Text - Centered on top of images */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-center max-w-4xl mx-auto mb-16 sm:mb-20 md:mb-24"
+              className="text-center max-w-4xl mx-auto px-4"
             >
               <span
                 className="inline-block text-[10px] sm:text-xs font-mono tracking-[0.3em] uppercase mb-4 sm:mb-6 text-white/90"
@@ -85,51 +115,7 @@ export default function Gallery() {
                 From lighting and styling to action shots and advertising creatives—we handle everything.
               </p>
             </motion.div>
-
-            {/* Image Grid as Background - Staggered Animation */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
-              {wordAds.map((ad, index) => (
-                <motion.div
-                  key={ad.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: index * 0.08,
-                    ease: "easeOut"
-                  }}
-                  className="group relative overflow-hidden rounded-lg shadow-2xl"
-                >
-                  <div className="relative aspect-[3/4] overflow-hidden bg-gray-900">
-                    <img
-                      src={ad.src}
-                      alt={ad.title}
-                      className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
-                      loading="lazy"
-                    />
-                    {/* Subtle overlay on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                      <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                        <p className="text-xs sm:text-sm font-medium text-white mb-1 drop-shadow-lg">{ad.title}</p>
-                        <p className="text-[10px] sm:text-xs text-white/80 drop-shadow-md">{ad.company}</p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
-
-          {/* Ambient Background Gradient */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-neutral-900 -z-10" />
-
-          {/* Subtle Noise Texture Overlay */}
-          <div
-            className="absolute inset-0 opacity-[0.03] -z-10"
-            style={{
-              backgroundImage: 'url("data:image/svg+xml,%3Csvg viewBox=\'0 0 400 400\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noiseFilter\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' /%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noiseFilter)\' /%3E%3C/svg%3E")',
-            }}
-          />
         </section>
 
         {/* SECTION 1: Portfolio Collections - Organized by Shot Type */}
