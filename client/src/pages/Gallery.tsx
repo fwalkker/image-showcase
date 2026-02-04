@@ -29,7 +29,7 @@ export default function Gallery() {
         </div>
         <a
           href="mailto:finn.walker@optivo.ca"
-          className="text-xs sm:text-sm font-medium border border-border px-3 sm:px-4 py-1.5 sm:py-2 hover:bg-secondary transition-colors whitespace-nowrap"
+          className="text-xs sm:text-sm font-medium border border-border px-3 sm:px-4 py-2 sm:py-2.5 hover:bg-secondary transition-colors whitespace-nowrap min-h-[44px] flex items-center"
         >
           Contact
         </a>
@@ -40,7 +40,7 @@ export default function Gallery() {
         {/* HERO SECTION - Text Overlaying Images */}
         <section id="hero" className="relative overflow-hidden">
           {/* Image Grid - Top row half off screen */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5 -mt-44 sm:-mt-52 md:-mt-64 lg:-mt-80">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4 md:gap-5 -mt-32 sm:-mt-52 md:-mt-64 lg:-mt-80 px-2 sm:px-0">
             {wordAds.map((ad, index) => (
               <motion.div
                 key={ad.id}
@@ -67,24 +67,24 @@ export default function Gallery() {
           <div className="absolute inset-0 bg-gray-200/50 pointer-events-none" />
 
           {/* Overlay Text - Higher position with white box */}
-          <div className="absolute inset-0 flex items-start justify-center pointer-events-none pt-8 sm:pt-12 md:pt-16">
+          <div className="absolute inset-0 flex items-start justify-center pointer-events-none pt-6 sm:pt-12 md:pt-16 px-3 sm:px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-center max-w-4xl mx-auto px-6 sm:px-8 md:px-12 py-6 sm:py-8 md:py-10 bg-white/95 backdrop-blur-sm"
+              className="text-center w-full max-w-4xl mx-auto px-4 sm:px-8 md:px-12 py-5 sm:py-8 md:py-10 bg-white/95 backdrop-blur-sm"
             >
-              <span className="inline-block text-[10px] sm:text-xs font-mono tracking-[0.3em] uppercase mb-4 sm:mb-6 text-muted-foreground">
+              <span className="inline-block text-[9px] sm:text-xs font-mono tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-3 sm:mb-6 text-muted-foreground">
                 Featured Campaigns
               </span>
 
-              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif mb-6 sm:mb-8 leading-[1.1] text-foreground">
-                Your Products.<br />
-                <span className="italic">Our Vision.</span>
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-4 sm:mb-8 leading-[1.15] text-foreground">
+                Your Products, Your Vision<br />
+                <span className="italic">Our Excecution.</span>
               </h1>
 
-              <p className="text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
-                Send us your products and we'll transform them into stunning photography.
+              <p className="text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
+                Send us your products and with your vision, we'll transform them into stunning photography.
                 From lighting and styling to action shots and advertising creatives—we handle everything.
               </p>
             </motion.div>
@@ -139,7 +139,7 @@ export default function Gallery() {
                       {/* View All Button */}
                       <button
                         onClick={() => toggleCollection(collection.id)}
-                        className="text-xs sm:text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity mt-3 sm:mt-4 cursor-pointer"
+                        className="text-xs sm:text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity mt-3 sm:mt-4 cursor-pointer min-h-[44px] flex items-center"
                       >
                         {isExpanded ? "Show Less" : "View All Shots"}
                       </button>
@@ -201,7 +201,7 @@ export default function Gallery() {
                       <div className="flex justify-center py-3 sm:py-4">
                         <button
                           onClick={() => toggleCollection(collection.id)}
-                          className="text-xs sm:text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity cursor-pointer"
+                          className="text-xs sm:text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity cursor-pointer min-h-[44px] flex items-center"
                         >
                           + {(collection.advertisingShots.length - 6) + collection.lifestyleShots.length + collection.ecomShots.length} more shots in this collection
                         </button>
@@ -259,7 +259,7 @@ export default function Gallery() {
             </p>
             <a
               href="mailto:finn.walker@optivo.ca"
-              className="inline-block px-6 sm:px-8 py-2.5 sm:py-3 bg-foreground text-background text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity"
+              className="inline-flex items-center justify-center px-6 sm:px-8 py-3 sm:py-3.5 bg-foreground text-background text-xs sm:text-sm font-medium hover:opacity-90 transition-opacity min-h-[44px] cursor-pointer"
             >
               Request Quote
             </a>
