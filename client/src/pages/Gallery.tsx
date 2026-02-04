@@ -67,50 +67,28 @@ export default function Gallery() {
                   className="w-full h-auto block transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
                   loading="lazy"
                 />
-                {/* Subtle overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4">
-                    <p className="text-xs sm:text-sm font-medium text-white mb-1 drop-shadow-lg">{ad.title}</p>
-                    <p className="text-[10px] sm:text-xs text-white/80 drop-shadow-md">{ad.company}</p>
-                  </div>
-                </div>
               </motion.div>
             ))}
           </div>
 
-          {/* Overlay Text - Centered on top of images */}
-          <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          {/* Overlay Text - Higher position with white box */}
+          <div className="absolute inset-0 flex items-start justify-center pointer-events-none pt-8 sm:pt-12 md:pt-16">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-center max-w-4xl mx-auto px-4"
+              className="text-center max-w-4xl mx-auto px-6 sm:px-8 md:px-12 py-6 sm:py-8 md:py-10 bg-white/95 backdrop-blur-sm"
             >
-              <span
-                className="inline-block text-[10px] sm:text-xs font-mono tracking-[0.3em] uppercase mb-4 sm:mb-6 text-white/90"
-                style={{
-                  textShadow: '0 2px 10px rgba(0,0,0,0.8), 0 0 30px rgba(0,0,0,0.5)'
-                }}
-              >
+              <span className="inline-block text-[10px] sm:text-xs font-mono tracking-[0.3em] uppercase mb-4 sm:mb-6 text-muted-foreground">
                 Featured Campaigns
               </span>
 
-              <h1
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-serif mb-6 sm:mb-8 leading-[1.1] text-white"
-                style={{
-                  textShadow: '0 4px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8), 0 8px 40px rgba(0,0,0,0.6)'
-                }}
-              >
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif mb-6 sm:mb-8 leading-[1.1] text-foreground">
                 Your Products.<br />
                 <span className="italic">Our Vision.</span>
               </h1>
 
-              <p
-                className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed text-white/95 font-light px-4"
-                style={{
-                  textShadow: '0 2px 12px rgba(0,0,0,0.9), 0 4px 20px rgba(0,0,0,0.7)'
-                }}
-              >
+              <p className="text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
                 Send us your products and we'll transform them into stunning photography.
                 From lighting and styling to action shots and advertising creatives—we handle everything.
               </p>
