@@ -50,7 +50,7 @@ export default function Gallery() {
         {/* HERO SECTION - Text Overlaying Images */}
         <section id="hero" className="relative overflow-hidden">
           {/* Mobile: Scrolling marquee of images */}
-          <div className="sm:hidden relative h-[85vh]">
+          <div className="sm:hidden relative h-[70vh]">
             <div className="absolute inset-0 flex flex-col gap-2 animate-scroll-up">
               {/* First set of images - 9 for 3x3 grid */}
               <div className="grid grid-cols-3 gap-2 px-2 flex-shrink-0">
@@ -119,11 +119,10 @@ export default function Gallery() {
               </span>
 
               <h1 className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-8 leading-[1.05] text-foreground">
-                Your Products, Your Vision<br />
-                <span className="italic">Our Excecution.</span>
+                Your Products, Your Vision, <span className="sm:hidden"><br /></span><span className="italic">Our Excecution.</span>
               </h1>
 
-              <p className="text-sm sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
+              <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
                 Send us your products and with your vision, we'll transform them into stunning photography.
                 From lighting and styling to action shots and advertising creatives—we handle everything.
               </p>
