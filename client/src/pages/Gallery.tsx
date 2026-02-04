@@ -38,9 +38,9 @@ export default function Gallery() {
       <main className="pt-16 sm:pt-20">
 
         {/* HERO SECTION - Text Overlaying Images */}
-        <section id="hero" className="relative overflow-hidden">
+        <section id="hero" className="relative overflow-hidden min-h-[60vh] sm:min-h-0">
           {/* Image Grid - Top row half off screen */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4 md:gap-5 -mt-32 sm:-mt-52 md:-mt-64 lg:-mt-80 px-2 sm:px-0">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4 md:gap-5 -mt-8 sm:-mt-52 md:-mt-64 lg:-mt-80 px-2 sm:px-0">
             {wordAds.map((ad, index) => (
               <motion.div
                 key={ad.id}
