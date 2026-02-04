@@ -40,8 +40,8 @@ export default function Gallery() {
         {/* Section 1: The 4 Companies (Collections) */}
         <section className="container mx-auto px-4 mb-24">
           <header className="mb-12 text-center max-w-2xl mx-auto">
-            <h1 className="text-4xl md:text-6xl font-serif mb-4">Curated Collections</h1>
-            <p className="text-muted-foreground">Exploring the intersection of art, nature, and commerce.</p>
+            <h1 className="text-4xl md:text-6xl font-serif mb-4">Your Products. Our Vision.</h1>
+            <p className="text-muted-foreground leading-relaxed">Send us your products and we'll transform them into stunning photography. From lighting and styling to action shots and advertising creatives—we handle everything so you can focus on what matters.</p>
           </header>
 
           <div className="space-y-32">
