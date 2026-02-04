@@ -97,12 +97,12 @@ export default function Gallery() {
           <div className="absolute inset-0 bg-gray-200/50 pointer-events-none" />
 
           {/* Overlay Text - Higher position with white box */}
-          <div className="absolute inset-0 flex items-center sm:items-start justify-center pointer-events-none sm:pt-12 md:pt-16 px-3 sm:px-4">
+          <div className="absolute inset-0 flex items-center sm:items-start justify-center pointer-events-none sm:pt-12 md:pt-16 px-0 sm:px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-center w-full max-w-4xl mx-auto px-4 sm:px-8 md:px-12 py-5 sm:py-8 md:py-10 bg-white/95 backdrop-blur-sm"
+              className="text-center w-full sm:max-w-4xl mx-auto px-4 sm:px-8 md:px-12 py-5 sm:py-8 md:py-10 bg-white/95 backdrop-blur-sm"
             >
               <span className="inline-block text-[9px] sm:text-xs font-mono tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-3 sm:mb-6 text-muted-foreground">
                 Featured Campaigns
