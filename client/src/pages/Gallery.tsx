@@ -1,20 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { collections, wordAds, ecomItems } from "@/lib/mockData";
 import { GalleryCard } from "@/components/GalleryCard";
 import { Separator } from "@/components/ui/separator";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 
 export default function Gallery() {
   const [expandedCollections, setExpandedCollections] = useState<Set<string>>(new Set());
-  const [currentHeroIndex, setCurrentHeroIndex] = useState(0);
-
-  // Auto-rotate hero images
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentHeroIndex((prev) => (prev + 1) % wordAds.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
 
   const toggleCollection = (collectionId: string) => {
     setExpandedCollections((prev) => {
@@ -49,80 +40,47 @@ export default function Gallery() {
       <main className="pt-20">
 
         {/* HERO SECTION - Word Ads Showcase */}
-        <section id="hero" className="relative h-[85vh] overflow-hidden bg-black">
-          {/* Background Images with Crossfade */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={currentHeroIndex}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.8 }}
-              className="absolute inset-0"
-            >
-              <img
-                src={wordAds[currentHeroIndex].src}
-                alt={wordAds[currentHeroIndex].title}
-                className="w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/60" />
-            </motion.div>
-          </AnimatePresence>
-
-          {/* Hero Content Overlay */}
-          <div className="absolute inset-0 flex flex-col justify-end p-8 md:p-16">
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-            >
-              <span className="text-xs font-mono text-white/60 tracking-widest uppercase mb-4 block">
-                Featured Campaign
+        <section id="hero" className="relative bg-background py-16 md:py-24">
+          <div className="container mx-auto px-4">
+            {/* Hero Header */}
+            <div className="mb-12 text-center max-w-3xl mx-auto">
+              <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4 block">
+                Featured Campaigns
               </span>
-              <h1 className="text-4xl md:text-7xl font-serif text-white mb-4 max-w-3xl leading-tight">
+              <h1 className="text-4xl md:text-7xl font-serif mb-6 leading-tight">
                 Your Products.<br />Our Vision.
               </h1>
-              <p className="text-white/70 max-w-xl mb-8 leading-relaxed">
+              <p className="text-muted-foreground max-w-xl mx-auto leading-relaxed">
                 Send us your products and we'll transform them into stunning photography.
                 From lighting and styling to action shots and advertising creatives—we handle everything.
               </p>
-            </motion.div>
+            </div>
 
-            {/* Hero Navigation Dots */}
-            <div className="flex items-center gap-2">
-              {wordAds.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setCurrentHeroIndex(idx)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    idx === currentHeroIndex
-                      ? "bg-white w-8"
-                      : "bg-white/40 hover:bg-white/60"
-                  }`}
-                />
+            {/* All Ads Grid - 2 rows of 5 */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {wordAds.map((ad) => (
+                <motion.div
+                  key={ad.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="group relative aspect-square overflow-hidden bg-gray-100 rounded-sm"
+                >
+                  <img
+                    src={ad.src}
+                    alt={ad.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="absolute bottom-0 left-0 right-0 p-3 text-white">
+                      <p className="text-xs font-medium mb-1">{ad.title}</p>
+                      <p className="text-[10px] text-white/70">{ad.company}</p>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
             </div>
-          </div>
-
-          {/* Side Preview Thumbnails */}
-          <div className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 hidden lg:flex flex-col gap-2">
-            {wordAds.slice(0, 5).map((ad, idx) => (
-              <button
-                key={ad.id}
-                onClick={() => setCurrentHeroIndex(idx)}
-                className={`w-16 h-16 overflow-hidden transition-all duration-300 ${
-                  idx === currentHeroIndex
-                    ? "ring-2 ring-white scale-110"
-                    : "opacity-60 hover:opacity-100"
-                }`}
-              >
-                <img
-                  src={ad.src}
-                  alt={ad.title}
-                  className="w-full h-full object-cover"
-                />
-              </button>
-            ))}
           </div>
         </section>
 
