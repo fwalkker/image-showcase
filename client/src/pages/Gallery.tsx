@@ -38,9 +38,39 @@ export default function Gallery() {
       <main className="pt-16 sm:pt-20">
 
         {/* HERO SECTION - Text Overlaying Images */}
-        <section id="hero" className="relative overflow-hidden min-h-[60vh] sm:min-h-0">
-          {/* Image Grid - Top row half off screen */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2 sm:gap-4 md:gap-5 -mt-8 sm:-mt-52 md:-mt-64 lg:-mt-80 px-2 sm:px-0">
+        <section id="hero" className="relative overflow-hidden">
+          {/* Mobile: Scrolling marquee of images */}
+          <div className="sm:hidden relative h-[70vh]">
+            <div className="absolute inset-0 flex flex-col gap-2 animate-scroll-up">
+              {/* First set of images */}
+              <div className="grid grid-cols-3 gap-2 px-2 flex-shrink-0">
+                {wordAds.map((ad) => (
+                  <img
+                    key={ad.id}
+                    src={ad.src}
+                    alt={ad.title}
+                    className="w-full h-auto block"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+              {/* Duplicate for seamless loop */}
+              <div className="grid grid-cols-3 gap-2 px-2 flex-shrink-0">
+                {wordAds.map((ad) => (
+                  <img
+                    key={`${ad.id}-dup`}
+                    src={ad.src}
+                    alt={ad.title}
+                    className="w-full h-auto block"
+                    loading="lazy"
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Desktop: Grid layout */}
+          <div className="hidden sm:grid grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 md:gap-5 -mt-52 md:-mt-64 lg:-mt-80">
             {wordAds.map((ad, index) => (
               <motion.div
                 key={ad.id}
@@ -67,7 +97,7 @@ export default function Gallery() {
           <div className="absolute inset-0 bg-gray-200/50 pointer-events-none" />
 
           {/* Overlay Text - Higher position with white box */}
-          <div className="absolute inset-0 flex items-start justify-center pointer-events-none pt-6 sm:pt-12 md:pt-16 px-3 sm:px-4">
+          <div className="absolute inset-0 flex items-center sm:items-start justify-center pointer-events-none sm:pt-12 md:pt-16 px-3 sm:px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
