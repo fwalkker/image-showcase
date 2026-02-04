@@ -141,19 +141,19 @@ export default function Gallery() {
 
                   {/* Collection Images Grid */}
                   <div className="md:col-span-8">
-                    {/* ADVERTISING SHOTS - Always visible (Fantasy, Levitation, Splash, Hard Shadow, Reflection, Glow, Ingredients Spread) */}
+                    {/* ADVERTISING SHOTS - Show 6 when collapsed, all when expanded */}
                     <div className="mb-8">
                       <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4 block">
                         Advertising & Hero Shots
                       </span>
                       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
-                        {collection.advertisingShots.map((item) => (
+                        {(isExpanded ? collection.advertisingShots : collection.advertisingShots.slice(0, 6)).map((item) => (
                           <GalleryCard key={item.id} item={item} />
                         ))}
                       </div>
                     </div>
 
-                    {/* LIFESTYLE SHOTS - Shown on expand (Material Close-Up, Branding, Action Texture, Applicator, Hand-Held, In the Bag, Environmental, Human Interaction, Social) */}
+                    {/* LIFESTYLE SHOTS - Shown on expand */}
                     <AnimatePresence>
                       {isExpanded && (
                         <motion.div
@@ -174,7 +174,7 @@ export default function Gallery() {
                             </div>
                           </div>
 
-                          {/* E-COMMERCE SHOTS (Hero Front, 45-Degree, Back, Side, Top-Down, Open, Packaging) */}
+                          {/* E-COMMERCE SHOTS */}
                           <div>
                             <span className="text-xs font-mono text-muted-foreground tracking-widest uppercase mb-4 block">
                               E-commerce Product Shots
@@ -189,11 +189,15 @@ export default function Gallery() {
                       )}
                     </AnimatePresence>
 
+                    {/* Expand Button - Show remaining count */}
                     {!isExpanded && (
                       <div className="flex justify-center py-4">
-                        <span className="text-xs text-muted-foreground italic">
-                          + {collection.lifestyleShots.length + collection.ecomShots.length} more shots in this collection
-                        </span>
+                        <button
+                          onClick={() => toggleCollection(collection.id)}
+                          className="text-xs text-muted-foreground italic hover:text-foreground transition-colors cursor-pointer"
+                        >
+                          + {(collection.advertisingShots.length - 6) + collection.lifestyleShots.length + collection.ecomShots.length} more shots in this collection
+                        </button>
                       </div>
                     )}
                   </div>
