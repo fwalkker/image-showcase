@@ -54,11 +54,17 @@
   * {
     @apply border-border outline-ring/50;
   }
-  html, body {
-    overflow-x: hidden;
-  }
   body {
     @apply bg-background text-foreground font-sans antialiased;
+  }
+}
+
+/* Sticky sidebar for collections on desktop */
+@media (min-width: 768px) {
+  .collection-sidebar-sticky {
+    position: sticky;
+    top: 6rem;
+    align-self: start;
   }
 }
 

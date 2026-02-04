@@ -152,7 +152,7 @@ export default function Gallery() {
                 <div key={collection.id} className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-start">
 
                   {/* Collection Info - Mobile: Full width, Desktop: Sticky sidebar */}
-                  <div className="md:col-span-4 md:sticky md:top-24 lg:top-32">
+                  <div className="md:col-span-4 collection-sidebar-sticky">
                     <span className="text-[10px] sm:text-xs font-mono text-muted-foreground mb-2 block">
                       0{idx + 1} / COLLECTION
                     </span>
