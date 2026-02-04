@@ -71,6 +71,9 @@ export default function Gallery() {
             ))}
           </div>
 
+          {/* Light gray overlay for contrast */}
+          <div className="absolute inset-0 bg-gray-200/50 pointer-events-none" />
+
           {/* Overlay Text - Higher position with white box */}
           <div className="absolute inset-0 flex items-start justify-center pointer-events-none pt-8 sm:pt-12 md:pt-16">
             <motion.div
