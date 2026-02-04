@@ -123,7 +123,7 @@ export default function Gallery() {
                 <span className="italic">Our Excecution.</span>
               </h1>
 
-              <p className="text-xs sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
+              <p className="text-sm sm:text-sm md:text-base max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
                 Send us your products and with your vision, we'll transform them into stunning photography.
                 From lighting and styling to action shots and advertising creatives—we handle everything.
               </p>
