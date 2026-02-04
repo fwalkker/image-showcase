@@ -114,16 +114,16 @@ export default function Gallery() {
               transition={{ duration: 0.8, ease: "easeOut" }}
               className="text-center w-full sm:max-w-4xl mx-auto px-4 sm:px-8 md:px-12 py-5 sm:py-8 md:py-10 bg-white/95 backdrop-blur-sm"
             >
-              <span className="inline-block text-[10px] sm:text-xs font-mono tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-3 sm:mb-6 text-muted-foreground">
+              <span className="inline-block text-xs sm:text-xs font-mono tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-3 sm:mb-6 text-muted-foreground">
                 Featured Campaigns
               </span>
 
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-4 sm:mb-8 leading-[1.1] text-foreground">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif mb-4 sm:mb-8 leading-[1.1] text-foreground">
                 Your Products, Your Vision<br />
                 <span className="italic">Our Excecution.</span>
               </h1>
 
-              <p className="text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
+              <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
                 Send us your products and with your vision, we'll transform them into stunning photography.
                 From lighting and styling to action shots and advertising creatives—we handle everything.
               </p>
