@@ -99,7 +99,7 @@ export default function Gallery() {
             </span>
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif mb-3 sm:mb-4">We Transform Products</h2>
             <p className="text-sm sm:text-base text-muted-foreground leading-relaxed px-2">
-              Every product has a story worth telling. We bring that story to life through professional digital photography that captures attention and drives results.
+              Every product has a story worth telling. We bring that story to life through professional digital photography that captures attention and drives results. Below are just a few of our recent projects:
             </p>
           </header>
 
