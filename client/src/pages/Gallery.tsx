@@ -129,7 +129,7 @@ export default function Gallery() {
                 From lighting and styling to action shots and advertising creatives—we handle everything.
               </p>
 
-              <span className="inline-block mt-6 sm:mt-8 text-xs font-mono tracking-[0.15em] uppercase text-foreground/70">
+              <span className="inline-block mt-6 sm:mt-8 px-4 py-2 bg-foreground text-background text-sm sm:text-base font-medium tracking-wide">
                 Starting at $9/image
               </span>
             </motion.div>
