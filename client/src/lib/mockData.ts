@@ -29,12 +29,12 @@ export const wordAds: GalleryItem[] = [
   { id: "word-1", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_6sgwln6sgwln6sgw.webp", title: "Word Ad 1", aspectRatio: "landscape" },
   { id: "word-2", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_8etlq88etlq88etl.webp", title: "Word Ad 2", aspectRatio: "landscape" },
   { id: "word-3", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_dwz4g4dwz4g4dwz4.webp", title: "Word Ad 3", aspectRatio: "landscape" },
-  { id: "word-4", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_e1fy3xe1fy3xe1fy.webp", title: "Word Ad 4", aspectRatio: "landscape" },
-  { id: "word-5", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_jqlbdyjqlbdyjqlb.webp", title: "Word Ad 5", aspectRatio: "landscape" },
+  { id: "word-4", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_shcay3shcay3shca.webp", title: "Word Ad 9", aspectRatio: "landscape" },
+  { id: "word-5", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_qkw3acqkw3acqkw3.webp", title: "Word Ad 8", aspectRatio: "landscape" },
   { id: "word-6", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_o4naglo4naglo4na.webp", title: "Word Ad 6", aspectRatio: "landscape" },
   { id: "word-7", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_ox4yn7ox4yn7ox4y.webp", title: "Word Ad 7", aspectRatio: "landscape" },
-  { id: "word-8", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_qkw3acqkw3acqkw3.webp", title: "Word Ad 8", aspectRatio: "landscape" },
-  { id: "word-9", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_shcay3shcay3shca.webp", title: "Word Ad 9", aspectRatio: "landscape" },
+  { id: "word-8", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_jqlbdyjqlbdyjqlb.webp", title: "Word Ad 5", aspectRatio: "landscape" },
+  { id: "word-9", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_e1fy3xe1fy3xe1fy.webp", title: "Word Ad 4", aspectRatio: "landscape" },
   { id: "word-10", type: "wordAd", src: "/images-out/public/images-in/Word ads/Gemini_Generated_Image_tasgeltasgeltasg.webp", title: "Word Ad 10", aspectRatio: "landscape" },
 ];
 
