@@ -128,14 +128,15 @@ export default function Gallery() {
                         <span className="w-3 h-3 bg-foreground/30 rounded-full"></span>
                         <span>E-commerce ({collection.ecomShots.length})</span>
                       </div>
-                    </div>
 
-                    <button
-                      onClick={() => toggleCollection(collection.id)}
-                      className="text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity"
-                    >
-                      {isExpanded ? "Show Less" : "View All Shots"}
-                    </button>
+                      {/* View All Button */}
+                      <button
+                        onClick={() => toggleCollection(collection.id)}
+                        className="text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity mt-4"
+                      >
+                        {isExpanded ? "Show Less" : "View All Shots"}
+                      </button>
+                    </div>
                   </div>
 
                   {/* Collection Images Grid */}
@@ -243,8 +244,8 @@ export default function Gallery() {
           </div>
 
           <div className="mt-12 text-center">
-            <p className="text-muted-foreground mb-4 text-sm">
-              Showing {ecomItems.length} products
+            <p className="text-muted-foreground mb-4 text-sm italic">
+              And Many more!
             </p>
             <a
               href="mailto:finn.walker@optivo.ca"
