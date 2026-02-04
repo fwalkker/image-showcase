@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { collections, wordAds, ecomItems } from "@/lib/mockData";
 import { GalleryCard } from "@/components/GalleryCard";
 import { Separator } from "@/components/ui/separator";
@@ -6,6 +6,21 @@ import { motion, AnimatePresence } from "framer-motion";
 
 export default function Gallery() {
   const [expandedCollection, setExpandedCollection] = useState<string | null>(null);
+  const [showNavPricing, setShowNavPricing] = useState(false);
+
+  // Show nav pricing badge only after scrolling past hero section
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroSection = document.getElementById('hero');
+      if (heroSection) {
+        const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
+        setShowNavPricing(window.scrollY > heroBottom - 100);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const toggleCollection = (collectionId: string) => {
     // Save scroll position before toggle (for mobile)
@@ -38,7 +53,9 @@ export default function Gallery() {
           <span className="text-muted-foreground">Website coming soon!</span>
         </div>
         <div className="flex items-center gap-3 sm:gap-4">
-          <span className="px-2.5 sm:px-3 py-1 sm:py-1.5 bg-foreground text-background text-[10px] sm:text-xs font-medium tracking-wide">
+          <span
+            className={`px-2.5 sm:px-3 py-1 sm:py-1.5 bg-foreground text-background text-[10px] sm:text-xs font-medium tracking-wide transition-opacity duration-300 ${showNavPricing ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          >
             Starting at $9/image
           </span>
           <a
