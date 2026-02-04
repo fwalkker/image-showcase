@@ -50,7 +50,7 @@ export default function Gallery() {
         {/* HERO SECTION - Text Overlaying Images */}
         <section id="hero" className="relative overflow-hidden">
           {/* Mobile: Scrolling marquee of images */}
-          <div className="sm:hidden relative h-[70vh]">
+          <div className="sm:hidden relative h-[85vh]">
             <div className="absolute inset-0 flex flex-col gap-2 animate-scroll-up">
               {/* First set of images - 9 for 3x3 grid */}
               <div className="grid grid-cols-3 gap-2 px-2 flex-shrink-0">
