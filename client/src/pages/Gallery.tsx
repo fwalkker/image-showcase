@@ -209,7 +209,7 @@ export default function Gallery() {
                       <div className="flex justify-center py-3 sm:py-4">
                         <button
                           onClick={() => toggleCollection(collection.id)}
-                          className="text-[11px] sm:text-xs text-muted-foreground italic hover:text-foreground transition-colors cursor-pointer"
+                          className="text-xs sm:text-sm border-b border-foreground pb-0.5 hover:opacity-50 transition-opacity"
                         >
                           + {(collection.advertisingShots.length - 6) + collection.lifestyleShots.length + collection.ecomShots.length} more shots in this collection
                         </button>
