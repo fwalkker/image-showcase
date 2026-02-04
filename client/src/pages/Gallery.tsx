@@ -24,14 +24,15 @@ export default function Gallery() {
       {/* Navigation - Minimalist */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-background/80 backdrop-blur-md border-b border-border/40">
         <div className="text-xl font-serif font-bold tracking-tight">Lumina.</div>
-        <div className="hidden md:flex space-x-8 text-sm font-medium text-muted-foreground">
-          <a href="#" className="hover:text-foreground transition-colors">Collections</a>
-          <a href="#" className="hover:text-foreground transition-colors">Editorial</a>
-          <a href="#" className="hover:text-foreground transition-colors">Shop</a>
+        <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
+          <span className="text-muted-foreground italic">Website coming soon!</span>
         </div>
-        <button className="text-sm font-medium border border-border px-4 py-2 hover:bg-secondary transition-colors">
-          Menu
-        </button>
+        <a
+          href="mailto:finn.walker@optivo.ca"
+          className="text-sm font-medium border border-border px-4 py-2 hover:bg-secondary transition-colors"
+        >
+          Contact
+        </a>
       </nav>
 
       <main className="pt-24 pb-20">
