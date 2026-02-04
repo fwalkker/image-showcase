@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { collections, wordAds, ecomItems } from "@/lib/mockData";
 import { GalleryCard } from "@/components/GalleryCard";
 import { Separator } from "@/components/ui/separator";
@@ -8,7 +8,17 @@ export default function Gallery() {
   const [expandedCollection, setExpandedCollection] = useState<string | null>(null);
 
   const toggleCollection = (collectionId: string) => {
+    // Save scroll position before toggle (for mobile)
+    const scrollY = window.scrollY;
+
     setExpandedCollection((prev) => prev === collectionId ? null : collectionId);
+
+    // Restore scroll position after a brief delay (for mobile)
+    if (window.innerWidth < 640) {
+      requestAnimationFrame(() => {
+        window.scrollTo(0, scrollY);
+      });
+    }
   };
 
   return (
@@ -194,11 +204,10 @@ export default function Gallery() {
                     <AnimatePresence>
                       {isExpanded && (
                         <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.4 }}
-                          className="overflow-hidden"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                          transition={{ duration: 0.3 }}
                         >
                           <div className="mb-6 sm:mb-8">
                             <span className="text-[10px] sm:text-xs font-mono text-muted-foreground tracking-widest uppercase mb-3 sm:mb-4 block">
