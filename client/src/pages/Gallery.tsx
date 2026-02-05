@@ -64,7 +64,7 @@ export default function Gallery() {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: '0a38d7b7-8c82-4c22-bc70-4f9f3c9d6a1e', // Optivo Web3Forms key
+          access_key: '6685ac1a-7a91-483c-a694-00a6c5430f32',
           subject: `Free Sample Request from ${formData.name}`,
           from_name: formData.name,
           email: formData.email,
