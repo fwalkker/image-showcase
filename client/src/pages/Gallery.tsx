@@ -130,7 +130,7 @@ export default function Gallery() {
 
       {/* Navigation - Mobile Optimized */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-background/80 backdrop-blur-md border-b border-border/40">
-        <div className="h-7 sm:h-8 md:h-10 flex-shrink-0">
+        <div className="h-9 sm:h-10 md:h-12 flex-shrink-0">
           <img
             src="/images-optimized/public/webp/Advertizing Photos/optivo-logo.webp"
             alt="Optivo Logo"
