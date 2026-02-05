@@ -273,8 +273,8 @@ export default function Gallery() {
               className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 text-center"
             >
               <div className="flex flex-col items-center">
-                <span className="text-4xl sm:text-5xl font-serif text-foreground">500+</span>
-                <span className="text-xs sm:text-sm text-muted-foreground mt-1 tracking-wide uppercase">Products Transformed</span>
+                <span className="text-4xl sm:text-5xl font-serif text-foreground">20+</span>
+                <span className="text-xs sm:text-sm text-muted-foreground mt-1 tracking-wide uppercase">Shot Types</span>
               </div>
               <div className="hidden md:block w-px h-12 bg-border"></div>
               <div className="flex flex-col items-center">
