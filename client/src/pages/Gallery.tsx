@@ -65,11 +65,13 @@ export default function Gallery() {
         },
         body: JSON.stringify({
           access_key: '6685ac1a-7a91-483c-a694-00a6c5430f32',
-          subject: `Free Sample Request from ${formData.name}`,
+          subject: `New Lead: ${formData.name} - Free Sample Request`,
           from_name: formData.name,
+          replyto: formData.email,
           email: formData.email,
-          message: `Product Description:\n${formData.product}\n\n---\nReply to: ${formData.email}`,
-          to: 'finn.walker@optivo.ca',
+          name: formData.name,
+          product_description: formData.product,
+          message: `Name: ${formData.name}\nEmail: ${formData.email}\n\nProduct Description:\n${formData.product}`,
         }),
       });
 
@@ -748,7 +750,7 @@ export default function Gallery() {
                 alt="Optivo Logo"
                 className="h-10 sm:h-12 w-auto object-contain mb-3"
               />
-              <p className="text-xs sm:text-sm text-muted-foreground">AI-Powered Product Photography</p>
+              <p className="text-xs sm:text-sm text-muted-foreground">Marketing & Photography</p>
             </div>
 
             <div className="flex flex-col items-center md:items-end gap-2">
