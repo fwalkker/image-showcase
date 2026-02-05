@@ -10,6 +10,8 @@ export default function Gallery() {
   const [showStickyCTA, setShowStickyCTA] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', product: '' });
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formLoading, setFormLoading] = useState(false);
+  const [formError, setFormError] = useState('');
 
   // Show nav pricing badge only after scrolling past hero section
   useEffect(() => {
@@ -43,18 +45,48 @@ export default function Gallery() {
     }
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setFormLoading(true);
+    setFormError('');
+
     // Track form submission in GA4
     trackEvent('generate_lead', {
       form_name: 'free_sample_request',
       form_location: 'contact_section'
     });
-    // Open mailto with pre-filled content
-    const subject = encodeURIComponent(`Free Sample Request from ${formData.name}`);
-    const body = encodeURIComponent(`Hi Optivo team,\n\nI'd like to request a free sample image.\n\nName: ${formData.name}\nEmail: ${formData.email}\nProduct: ${formData.product}\n\nLooking forward to seeing what you can create!`);
-    window.location.href = `mailto:finn.walker@optivo.ca?subject=${subject}&body=${body}`;
-    setFormSubmitted(true);
+
+    try {
+      // Send via Web3Forms (free email API)
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: '0a38d7b7-8c82-4c22-bc70-4f9f3c9d6a1e', // Optivo Web3Forms key
+          subject: `Free Sample Request from ${formData.name}`,
+          from_name: formData.name,
+          email: formData.email,
+          message: `Product Description:\n${formData.product}\n\n---\nReply to: ${formData.email}`,
+          to: 'finn.walker@optivo.ca',
+        }),
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        setFormSubmitted(true);
+        setFormData({ name: '', email: '', product: '' });
+      } else {
+        throw new Error(data.message || 'Something went wrong');
+      }
+    } catch (error) {
+      setFormError('Failed to send. Please email us directly at finn.walker@optivo.ca');
+      console.error('Form submission error:', error);
+    } finally {
+      setFormLoading(false);
+    }
   };
 
   const handleCTAClick = (ctaLocation: string) => {
@@ -575,8 +607,18 @@ export default function Gallery() {
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                     </div>
-                    <h3 className="text-2xl font-serif mb-3">We're On It!</h3>
-                    <p className="text-muted-foreground">Your email client should open with a pre-filled message. Just hit send and we'll get back to you within 24 hours.</p>
+                    <h3 className="text-2xl font-serif mb-3">You're All Set!</h3>
+                    <p className="text-muted-foreground mb-4">We've received your request and will reply within 24 hours.</p>
+                    <div className="bg-secondary/50 p-4 text-sm text-left">
+                      <p className="font-medium mb-2 flex items-center gap-2">
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Next Step:
+                      </p>
+                      <p className="text-muted-foreground">Reply to our email with a quick phone photo of your product. It doesn't need to be perfect—we'll transform it into something stunning!</p>
+                    </div>
                   </div>
                 ) : (
                   <form onSubmit={handleFormSubmit} className="space-y-6">
@@ -621,17 +663,44 @@ export default function Gallery() {
                         onChange={(e) => setFormData({ ...formData, product: e.target.value })}
                         rows={4}
                         className="w-full px-4 py-3.5 border border-border bg-background text-foreground focus:border-foreground focus:outline-none transition-colors text-sm resize-none"
-                        placeholder="e.g., Handmade candles, artisan jewelry, organic skincare..."
+                        placeholder="e.g., Handmade soy candles in amber jars, lavender scent..."
                       />
+                      <p className="mt-2 text-xs text-muted-foreground flex items-center gap-1.5">
+                        <svg className="w-4 h-4 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        Snap a quick photo with your phone and reply with it—we'll handle the rest!
+                      </p>
                     </div>
+
+                    {formError && (
+                      <div className="p-3 bg-red-50 border border-red-200 text-red-700 text-sm">
+                        {formError}
+                      </div>
+                    )}
+
                     <button
                       type="submit"
-                      className="w-full py-4 bg-foreground text-background text-sm font-medium hover:bg-foreground/90 transition-all duration-300 flex items-center justify-center gap-2 group"
+                      disabled={formLoading}
+                      className="w-full py-4 bg-foreground text-background text-sm font-medium hover:bg-foreground/90 transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      Get My Free Sample Image
-                      <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                      </svg>
+                      {formLoading ? (
+                        <>
+                          <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                          </svg>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Get My Free Sample Image
+                          <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                          </svg>
+                        </>
+                      )}
                     </button>
                     <p className="text-center text-xs text-muted-foreground mt-4">
                       No payment required. See results before you commit.
