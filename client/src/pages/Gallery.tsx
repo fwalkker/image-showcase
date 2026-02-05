@@ -137,7 +137,7 @@ export default function Gallery() {
             className="h-full w-auto object-contain"
           />
         </div>
-        <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
+        <div className="hidden md:flex items-center space-x-8 text-sm font-medium absolute left-1/2 -translate-x-1/2">
           <a href="#hero" className="text-muted-foreground hover:text-foreground transition-colors">Featured</a>
           <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">How It Works</a>
           <a href="#collections" className="text-muted-foreground hover:text-foreground transition-colors">Portfolio</a>
