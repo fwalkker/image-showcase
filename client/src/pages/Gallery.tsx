@@ -163,7 +163,7 @@ export default function Gallery() {
         {/* HERO SECTION - Text Overlaying Images */}
         <section id="hero" className="relative overflow-hidden">
           {/* Mobile: Scrolling marquee of images */}
-          <div className="sm:hidden relative h-[70vh]">
+          <div className="sm:hidden relative h-[100vh]">
             <div className="absolute inset-0 flex flex-col gap-2 animate-scroll-up">
               {/* First set of images - 9 for 3x3 grid */}
               <div className="grid grid-cols-3 gap-2 px-2 flex-shrink-0">
@@ -220,40 +220,39 @@ export default function Gallery() {
           <div className="absolute inset-0 bg-gray-200/50 pointer-events-none" />
 
           {/* Overlay Text - Higher position with white box */}
-          <div className="absolute inset-0 flex items-center sm:items-start justify-center pointer-events-none sm:pt-12 md:pt-16 px-0 sm:px-4">
+          <div className="absolute inset-0 flex items-start sm:items-start justify-center pointer-events-none pt-20 sm:pt-12 md:pt-16 px-3 sm:px-4">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, ease: "easeOut" }}
-              className="text-center w-full sm:max-w-4xl mx-auto px-4 sm:px-8 md:px-12 py-5 sm:py-8 md:py-10 bg-white/95 backdrop-blur-sm"
+              className="text-center w-full sm:max-w-4xl mx-auto px-4 sm:px-8 md:px-12 py-4 sm:py-8 md:py-10 bg-white/90 sm:bg-white/95 backdrop-blur-sm"
             >
               <span className="inline-block text-xs sm:text-xs font-mono tracking-[0.2em] sm:tracking-[0.3em] uppercase mb-3 sm:mb-6 text-muted-foreground">
                 Featured Campaigns
               </span>
 
-              <h1 className="font-serif mb-4 sm:mb-8 leading-[1.05] text-foreground">
-                <span className="text-4xl sm:text-4xl md:text-5xl lg:text-6xl sm:whitespace-nowrap">Your Products,<span className="sm:hidden"><br /></span> Your Vision,</span>
+              <h1 className="font-serif mb-3 sm:mb-8 leading-[1.05] text-foreground">
+                <span className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl sm:whitespace-nowrap">Your Products,<span className="sm:hidden"><br /></span> Your Vision,</span>
                 <span className="sm:hidden"><br /></span>
-                <span className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl italic"> Our Execution.</span>
+                <span className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl italic"> Our Execution.</span>
               </h1>
 
-              <p className="text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
-                Send us your products and with your vision, we'll transform them into stunning photography.
-                From lighting and styling to action shots and advertising creatives—we handle everything.
+              <p className="text-sm sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed text-muted-foreground font-light">
+                Send us your products and we'll transform them into stunning photography.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-8 sm:mt-10 justify-center pointer-events-auto">
+              <div className="flex flex-col sm:flex-row gap-2 sm:gap-4 mt-5 sm:mt-10 justify-center pointer-events-auto">
                 <a
                   href="#contact"
                   onClick={() => handleCTAClick('hero_primary')}
-                  className="group px-8 py-4 bg-foreground text-background text-sm sm:text-base font-medium hover:bg-foreground/90 transition-all duration-300 flex items-center justify-center gap-2"
+                  className="group px-6 py-3 sm:px-8 sm:py-4 bg-foreground text-background text-sm sm:text-base font-medium hover:bg-foreground/90 transition-all duration-300 flex items-center justify-center gap-2"
                 >
                   Get Your Free Sample
                   <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
                 </a>
-                <span className="px-6 py-4 text-sm sm:text-base text-muted-foreground font-medium flex items-center justify-center gap-2">
+                <span className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-base text-muted-foreground font-medium flex items-center justify-center gap-2">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                   Starting at $9/image
                 </span>
