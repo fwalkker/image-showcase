@@ -752,7 +752,7 @@ export default function Gallery() {
               <img
                 src="/webp/optivo-logo-exact.webp"
                 alt="Optivo Logo"
-                className="h-10 sm:h-12 w-auto object-contain mb-3 invert"
+                className="h-10 sm:h-12 w-auto object-contain mb-3"
               />
               <p className="text-xs sm:text-sm text-background/70">Marketing & Photography</p>
             </div>
