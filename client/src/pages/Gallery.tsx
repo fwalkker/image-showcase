@@ -17,10 +17,15 @@ export default function Gallery() {
   useEffect(() => {
     const handleScroll = () => {
       const heroSection = document.getElementById('hero');
+      const contactSection = document.getElementById('contact');
       if (heroSection) {
         const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
         setShowNavPricing(window.scrollY > heroBottom - 100);
-        setShowStickyCTA(window.scrollY > heroBottom + 200);
+
+        // Show sticky CTA after hero, but hide when reaching contact form
+        const pastHero = window.scrollY > heroBottom + 200;
+        const atContact = contactSection ? window.scrollY > contactSection.offsetTop - window.innerHeight / 2 : false;
+        setShowStickyCTA(pastHero && !atContact);
       }
     };
 
