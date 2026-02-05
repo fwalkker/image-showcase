@@ -745,25 +745,25 @@ export default function Gallery() {
 
       </main>
 
-      <footer className="border-t border-border py-12 sm:py-16 bg-background">
+      <footer className="border-t border-border py-12 sm:py-16 bg-foreground text-background">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex flex-col items-center md:items-start">
               <img
-                src="/images-optimized/public/webp/Advertizing Photos/optivo-logo.webp"
+                src="/webp/optivo-logo-exact.webp"
                 alt="Optivo Logo"
-                className="h-10 sm:h-12 w-auto object-contain mb-3"
+                className="h-10 sm:h-12 w-auto object-contain mb-3 invert"
               />
-              <p className="text-xs sm:text-sm text-muted-foreground">Marketing & Photography</p>
+              <p className="text-xs sm:text-sm text-background/70">Marketing & Photography</p>
             </div>
 
             <div className="flex flex-col items-center md:items-end gap-2">
-              <div className="flex items-center gap-6 text-sm text-muted-foreground">
-                <a href="#how-it-works" className="hover:text-foreground transition-colors">How It Works</a>
-                <a href="#collections" className="hover:text-foreground transition-colors">Portfolio</a>
-                <a href="#contact" className="hover:text-foreground transition-colors">Contact</a>
+              <div className="flex items-center gap-6 text-sm text-background/70">
+                <a href="#how-it-works" className="hover:text-background transition-colors">How It Works</a>
+                <a href="#collections" className="hover:text-background transition-colors">Portfolio</a>
+                <a href="#contact" className="hover:text-background transition-colors">Contact</a>
               </div>
-              <p className="text-[10px] sm:text-xs text-muted-foreground mt-2">© 2025 Optivo. All rights reserved.</p>
+              <p className="text-[10px] sm:text-xs text-background/50 mt-2">© 2025 Optivo. All rights reserved.</p>
             </div>
           </div>
         </div>
