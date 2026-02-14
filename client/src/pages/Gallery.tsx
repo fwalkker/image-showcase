@@ -12,8 +12,11 @@ export default function Gallery() {
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [formLoading, setFormLoading] = useState(false);
   const [formError, setFormError] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
 
-  // Show nav pricing badge only after scrolling past hero section
+  // Scroll: pricing badge, sticky CTA, nav background, active section
   useEffect(() => {
     const handleScroll = () => {
       const heroSection = document.getElementById('hero');
@@ -27,11 +30,30 @@ export default function Gallery() {
         const atContact = contactSection ? window.scrollY > contactSection.offsetTop - window.innerHeight / 2 : false;
         setShowStickyCTA(pastHero && !atContact);
       }
+
+      // Scroll-triggered nav background
+      setScrolled(window.scrollY > 20);
+
+      // Active section tracking
+      const sections = ['contact', 'collections', 'how-it-works', 'hero'];
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && window.scrollY >= el.offsetTop - 200) {
+          setActiveSection(id);
+          break;
+        }
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = mobileMenuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileMenuOpen]);
 
   const toggleCollection = (collectionId: string) => {
     const scrollY = window.scrollY;
@@ -118,9 +140,9 @@ export default function Gallery() {
             <div className="container mx-auto flex items-center justify-between gap-4">
               <div className="hidden sm:block">
                 <p className="text-sm font-medium">Transform your products today</p>
-                <p className="text-xs opacity-80">Starting at just $9/image</p>
+                <p className="text-xs opacity-80">Starting at just $6/image</p>
               </div>
-              <p className="sm:hidden text-sm font-medium">$9/image — Get started</p>
+              <p className="sm:hidden text-sm font-medium">$6/image — Get started</p>
               <a
                 href="#contact"
                 onClick={() => handleCTAClick('sticky_bar')}
@@ -133,35 +155,95 @@ export default function Gallery() {
         )}
       </AnimatePresence>
 
-      {/* Navigation - Mobile Optimized */}
-      <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-background/80 backdrop-blur-md border-b border-border/40">
-        <div className="h-9 sm:h-10 md:h-12 flex-shrink-0">
+      {/* Navigation */}
+      <nav className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 transition-all duration-300 ${
+        scrolled
+          ? 'bg-background/95 backdrop-blur-xl border-b border-border/60 shadow-sm'
+          : 'bg-background/60 backdrop-blur-md border-b border-transparent'
+      }`}>
+        <a href="#hero" className="h-9 sm:h-10 md:h-12 flex-shrink-0" onClick={() => setMobileMenuOpen(false)}>
           <img
             src="/images-optimized/public/webp/Advertizing Photos/optivo-logo.webp"
             alt="Optivo Logo"
             className="h-full w-auto object-contain"
           />
-        </div>
+        </a>
         <div className="hidden md:flex items-center space-x-8 text-sm font-medium absolute left-1/2 -translate-x-1/2">
-          <a href="#hero" className="text-muted-foreground hover:text-foreground transition-colors">Featured</a>
-          <a href="#how-it-works" className="text-muted-foreground hover:text-foreground transition-colors">How It Works</a>
-          <a href="#collections" className="text-muted-foreground hover:text-foreground transition-colors">Portfolio</a>
+          {[
+            { href: '#hero', label: 'Featured', id: 'hero' },
+            { href: '#how-it-works', label: 'How It Works', id: 'how-it-works' },
+            { href: '#collections', label: 'Portfolio', id: 'collections' },
+          ].map((link) => (
+            <a
+              key={link.id}
+              href={link.href}
+              className={`relative py-1 transition-colors duration-200 ${
+                activeSection === link.id
+                  ? 'text-foreground'
+                  : 'text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              {link.label}
+              <span className={`absolute -bottom-1 left-0 h-px bg-foreground transition-all duration-300 ${
+                activeSection === link.id ? 'w-full' : 'w-0'
+              }`} />
+            </a>
+          ))}
         </div>
         <div className="flex items-center gap-3 sm:gap-4">
           <span
-            className={`px-2.5 sm:px-3 py-1 sm:py-1.5 bg-foreground text-background text-[10px] sm:text-xs font-medium tracking-wide transition-opacity duration-300 ${showNavPricing ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+            className={`hidden sm:inline-block px-2.5 sm:px-3 py-1 sm:py-1.5 bg-foreground text-background text-[10px] sm:text-xs font-medium tracking-wide transition-all duration-300 ${showNavPricing ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-1 pointer-events-none'}`}
           >
-            Starting at $9/image
+            Starting at $6/image
           </span>
           <a
             href="#contact"
-            onClick={() => handleCTAClick('nav_header')}
-            className="text-xs sm:text-sm font-medium bg-foreground text-background px-4 sm:px-5 py-2 sm:py-2.5 hover:bg-foreground/90 transition-colors whitespace-nowrap min-h-[44px] flex items-center"
+            onClick={() => { handleCTAClick('nav_header'); setMobileMenuOpen(false); }}
+            className="hidden sm:flex text-xs sm:text-sm font-medium bg-foreground text-background px-4 sm:px-5 py-2 sm:py-2.5 hover:bg-foreground/90 transition-colors whitespace-nowrap min-h-[44px] items-center"
           >
             Get Started
           </a>
+          {/* Hamburger - mobile */}
+          <button
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden flex flex-col justify-center items-center w-10 h-10 gap-[5px]"
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          >
+            <span className={`block w-5 h-[1.5px] bg-foreground transition-all duration-300 ${mobileMenuOpen ? 'rotate-45 translate-y-[6.5px]' : ''}`} />
+            <span className={`block w-5 h-[1.5px] bg-foreground transition-all duration-300 ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`block w-5 h-[1.5px] bg-foreground transition-all duration-300 ${mobileMenuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''}`} />
+          </button>
         </div>
       </nav>
+
+      {/* Mobile Menu Overlay */}
+      <div className={`fixed inset-0 z-40 bg-background/95 backdrop-blur-xl flex flex-col justify-center items-center gap-8 transition-all duration-300 ${
+        mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+      }`}>
+        {[
+          { href: '#hero', label: 'Featured' },
+          { href: '#how-it-works', label: 'How It Works' },
+          { href: '#collections', label: 'Portfolio' },
+          { href: '#contact', label: 'Contact' },
+        ].map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            onClick={() => setMobileMenuOpen(false)}
+            className="text-2xl font-serif text-foreground/60 hover:text-foreground transition-colors duration-200"
+          >
+            {link.label}
+          </a>
+        ))}
+        <div className="w-8 h-px bg-border" />
+        <a
+          href="#contact"
+          onClick={() => { handleCTAClick('mobile_menu'); setMobileMenuOpen(false); }}
+          className="text-lg font-medium bg-foreground text-background px-8 py-3.5 hover:bg-foreground/90 transition-colors"
+        >
+          Get Started
+        </a>
+      </div>
 
       <main className="pt-16 sm:pt-20">
 
@@ -259,7 +341,7 @@ export default function Gallery() {
                 </a>
                 <span className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-base text-muted-foreground font-medium flex items-center justify-center gap-2">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  Starting at $9/image
+                  Starting at $6/image
                 </span>
               </div>
             </motion.div>
@@ -763,7 +845,7 @@ export default function Gallery() {
                 <a href="#collections" className="hover:text-background transition-colors">Portfolio</a>
                 <a href="#contact" className="hover:text-background transition-colors">Contact</a>
               </div>
-              <p className="text-[10px] sm:text-xs text-background/50 mt-2">© 2025 Optivo. All rights reserved.</p>
+              <p className="text-[10px] sm:text-xs text-background/50 mt-2">© 2026 Optivo. All rights reserved.</p>
             </div>
           </div>
         </div>
